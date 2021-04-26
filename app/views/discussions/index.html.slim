@@ -1,2 +1,18 @@
 h1 Discussions#index
 p Find me in app/views/discussions/index.html.slim
+= link_to '新規登録', new_discussion_path, class: 'btn btn-primary'
+= link_to 'ログアウト', destroy_member_session_path, method: :delete
+.mb-3
+table.table.table-hover
+  thead.thead-default
+    tr 
+      th = Discussion.human_attribute_name(:theme)
+      th = Discussion.human_attribute_name(:description)
+      th = Discussion.human_attribute_name(:created_at)
+      th 
+  tbody
+   - @discussions.each do |discussion|
+      tr
+        td= link_to discussion.theme, discussion
+        td= discussion.description
+        td= discussion.created_at

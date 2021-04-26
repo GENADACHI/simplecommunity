@@ -1,2 +1,16 @@
 h1 Discussions#new
 p Find me in app/views/discussions/new.html.slim
+.nav.jsutify-content-end
+= link_to '一覧', discussions_path, class:'nav-link'
+
+= form_with model: @discussion, local: true do |f| 
+ .form-group
+ = f.label :theme
+ = f.text_field :theme, class: 'form-control', id: 'discussion_theme' 
+
+ .form-gruop 
+ = f.label :description 
+ = f.text_area :description, rows: 5, class: 'form-control', id: 'discussion_description' 
+ 
+ .form-action
+ = f.submit nil, class: 'btn btn-primary' 
