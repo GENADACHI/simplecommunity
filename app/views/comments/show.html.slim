@@ -1,0 +1,5 @@
+p id = "notice", = notice
+p.strong Content: = @comment.content
+= link_to 'Edit', edit_discussion_comment_path(@comment)
+= link_to 'Back', discussion_path(@comment.discussion_id)
+= link_to 'Delete', discussion_comment_path(@comment), method: :delete, data: { confirm: '削除します。よろしいですか?' }

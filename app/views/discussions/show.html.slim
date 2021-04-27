@@ -4,6 +4,7 @@ p Find me in app/views/discussions/show.html.slim
 = link_to '一覧', discussions_path, class: 'nav-link'
 = link_to '編集', edit_discussion_path, class: 'btn btn-@primary mr-3'
 = link_to '削除', @discussion, method: :delete, data: { confirm: "タスク「#{@discussion.theme}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
+= link_to 'コメントする', new_discussion_comment_path(@discussion) 
 table.table.table-hover
  tbody
    tr
@@ -21,14 +22,6 @@ table.table.table-hover
    tr         
      th = Discussion.human_attribute_name(:updated_at)
      td = @discussion.updated_at
-h2 class= "h4 text-primary" 'これまで寄せられたコメント'
-  ul class= "list-group"
-    if @discussion.comment.count == 0 then 
-    p class= "comment" 'まだありません。'
-    else 
-    @discussion.comment.reverse_each do |re|
-    li class= "list-group-item"
-      re.content + '(' + re.name + ')'
-    end
-   end
-  ul
+- if @discussion.comments.present? 
+   - @discussion.comments.each do |comment|
+     li = link_to comment.content, discussion_comment_path(comment)
