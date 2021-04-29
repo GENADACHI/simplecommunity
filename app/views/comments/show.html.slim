@@ -1,5 +1,5 @@
 p.Content: = @comment.present?
 
-= link_to 'Edit', edit_discussion_comment_path
-= link_to 'Back', discussion_path
-= link_to 'Delete', discussion_comment_path, method: :delete, data: { confirm: '削除します。よろしいですか?' }
+= link_to '編集', edit_comment_path(@comment)
+= link_to '戻る', discussion_path(@comment.discussion_id)
+= link_to 'Delete', comment_path(@comment), method: :delete, data: { confirm: '削除します。よろしいですか?' }

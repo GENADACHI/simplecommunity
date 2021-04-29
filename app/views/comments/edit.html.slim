@@ -1,9 +1,7 @@
 h1 Comments#edit
 p Find me in app/views/comments/edit.html.slim
 .nav.jsutify-content-end
-= link_to '詳細', @comment
 = link_to '一覧', discussion_comment_path, class:'nav-link'
-
 
 = form_with(model: [@comment.discussion, @comment], local: true) do |f| 
  .form-group
@@ -13,4 +11,4 @@ p Find me in app/views/comments/edit.html.slim
  .form-action
  = f.submit nil, class: 'btn btn-primary' 
  
- = link_to 'Back', discussion_path(@comment.discussion_id)
+ = link_to '戻る', discussion_path(@comment.discussion_id)
