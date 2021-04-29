@@ -13,14 +13,12 @@ class CommentsController < ApplicationController
 
   def edit
     @discussion = Discussion.find(params[:discussion_id])
-    @comment = Comment.find([:id])
   end
   
   def create
-    @comment =  Comment.new(comment_params)
-    @comment.discussion_id = params[:discussion_id]
+    @comment =  @discussion.comments.build(params_comment)
     if @comment.save
-      redirect_to discussion_path(@comment.discussion_id), notice: 'コメントが登録されました。'
+      redirect_to discussion_path(@discussion), notice: 'コメントが登録されました。'
     else
       render 'discusstion/show'
     end
@@ -35,15 +33,15 @@ class CommentsController < ApplicationController
   end
   
   def destroy
-    @comment.destroy
+    if @comment.destroy
       redirect_to discussion_path(@comment.discussion_id), notice: 'コメントは削除されました。'
+    else
+      render 'discusstion/show'
+    end
   end
   
   private
     def set_discusstion
       @discusstion = Discussion.find(params[:discussion_id])
-    end
-    def comment_params
-      params.require(:comment).permit(:title, :discussion_id)
     end
 end
