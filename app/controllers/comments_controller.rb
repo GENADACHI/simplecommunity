@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-   before_action :set_discusstion
+   before_action :set_comment, only: [:show, :edit, :update, :destroy]
  
   def index
     @discussion = Discussion.find(params[:discussion_id])
@@ -12,8 +12,6 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @discussion = Discussion.find(params[:discussion_id])
-    @comment = Comment.find(params[:id])
   end
   
   def create
@@ -27,7 +25,7 @@ class CommentsController < ApplicationController
     end
   end
   
-  def updated
+  def update
     if @comment.update(comment_params)
       redirect_to discussion_path(@comment.discussion_id), notice: 'コメントが更新されました。'
     else
@@ -43,6 +41,11 @@ class CommentsController < ApplicationController
   private
     def set_discusstion
       @discusstion = Discussion.find(params[:discussion_id])
+      
+    end
+    
+    def set_comment
+      @comment = Comment.find(params[:id])
     end
     
     def comment_params
