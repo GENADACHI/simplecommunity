@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get 'top/login_check'
   devise_for :members
   resources :discussions do
-  resources :comments, only: %i(new create update show)
-  end
-  resources :comments, only: %i(show destroy edit)
+    resources :comments
+ end
 end

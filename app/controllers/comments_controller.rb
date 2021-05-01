@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-   before_action :set_comment, only: [:show, :edit, :update, :destroy]
+   before_action :set_discussion
  
   def index
     @discussion = Discussion.find(params[:discussion_id])
@@ -14,8 +14,12 @@ class CommentsController < ApplicationController
   def edit
   end
   
+  def show
+    @comment = @discussion.comments.find(params[:id])
+  end
+  
   def create
-    @comment = Comment.new(comment_params)
+    @comment = Comment.new(params[:id])
     @comment.discussion_id = params[:discussion_id]
     
     if @comment.save
@@ -39,17 +43,7 @@ class CommentsController < ApplicationController
   end
   
   private
-    def set_discusstion
-      @discusstion = Discussion.find(params[:discussion_id])
-      
-    end
-    
-    def set_comment
-      @comment = Comment.find(params[:id])
-    end
-    
-    def comment_params
-      params.require(:comment).permit(:content, :discussion_id)
-    end
-    
+  def set_discussion
+    @discussion = Discussion.find(params[:discussion_id])
+  end
 end

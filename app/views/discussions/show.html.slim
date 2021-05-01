@@ -24,4 +24,4 @@ table.table.table-hover
      td = @discussion.updated_at
 - if @discussion.comments.present? 
    - @discussion.comments.each do |comment|
-     li = link_to comment.content, comment_path(comment)
+     li = link_to comment.content, discussion_comment_path(comment)
