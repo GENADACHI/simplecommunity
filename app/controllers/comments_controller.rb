@@ -17,15 +17,13 @@ class CommentsController < ApplicationController
   def show
     @comment = @discussion.comments.find(params[:id])
   end
-  
+
   def create
-    @comment = Comment.new(params[:id])
-    @comment.discussion_id = params[:discussion_id]
-    
+    @comment =  @discussion.comments.build(comment_params)
     if @comment.save
-      redirect_to discussion_path(@comment.discussion_id), notice: 'コメントが登録されました。'
+      redirect_to discussion_path(@discussion), notice: 'コメントが登録されました'
     else
-      render :new
+      render 'discusstion/show'
     end
   end
   
@@ -45,5 +43,9 @@ class CommentsController < ApplicationController
   private
   def set_discussion
     @discussion = Discussion.find(params[:discussion_id])
+  end
+  
+  def comment_params
+    params.require(:comment).permit(:content)
   end
 end
