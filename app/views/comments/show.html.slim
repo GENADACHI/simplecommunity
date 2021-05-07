@@ -1,5 +1,18 @@
-p.Content: = @comment.present?
+h1 コメント詳細
 
-= link_to '編集', edit_comment_path(@comment)
-= link_to '戻る', discussion_path(@comment.discussion_id)
-= link_to 'Delete', comment_path(@comment), method: :delete, data: { confirm: '削除します。よろしいですか?' }
+.nav.jsutify-content-end
+  = link_to '戻る', discussion_path(@comment.discussion_id)
+table.table.table-hover
+  tbody
+    tr
+      th= Comment.human_attribute_name(:content)
+      td= @comment.content
+    tr
+      th= Comment.human_attribute_name(:created_at)
+      td= @comment.created_at
+    tr
+      th= Comment.human_attribute_name(:updated_at)
+      td= @comment.updated_at
+p.Content: = @comment.present?
+= link_to '編集', edit_discussion_comment_path(@discussion, @comment)
+= link_to '削除', discussion_comment_path(@discussion, @comment), method: :delete, data: { confirm: '削除します。よろしいですか?' }, class: 'btn btn-danger

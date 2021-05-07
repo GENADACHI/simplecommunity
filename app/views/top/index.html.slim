@@ -1,5 +1,5 @@
-h1 Top#index
-p Find me in app/views/top/index.html.slim
-p = @msg
-= link_to 'login_check page!&gt;&gt;'.html_safe, {action:'login_check'}
-= link_to "Sign out&gt;&gt;".html_safe, destroy_member_session_path, method: :delete
+h1 コミュニティページへようこそ
+p ディスカッションへ参加するためにはログインが必要です
+p
+= link_to 'ログインはこちら&gt;&gt;'.html_safe, {action:'login_check'}
+= link_to "サインアウト&gt;&gt;".html_safe, destroy_member_session_path, method: :delete

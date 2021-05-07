@@ -12,6 +12,8 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    @discussion = Discussion.find(params[:discussion_id])
+    @comment = @discussion.comments.find(params[:id])
   end
   
   def show
@@ -28,6 +30,7 @@ class CommentsController < ApplicationController
   end
   
   def update
+    @comment = @discussion.comments.find(params[:id])
     if @comment.update(comment_params)
       redirect_to discussion_path(@comment.discussion_id), notice: 'コメントが更新されました。'
     else
@@ -36,6 +39,7 @@ class CommentsController < ApplicationController
   end
   
   def destroy
+    @comment = @discussion.comments.find(params[:id])
     @comment.destroy
       redirect_to discussion_path(@comment.discussion_id), notice: 'コメントは削除されました。'
   end

@@ -1,9 +1,9 @@
-h1 Discussions#show
-p Find me in app/views/discussions/show.html.slim
+h1 ディスカッションテーマ詳細画面
+p テーマ詳細についてコメントしてね
 .nav.justify-content-end
 = link_to '一覧', discussions_path, class: 'nav-link'
 = link_to '編集', edit_discussion_path, class: 'btn btn-@primary mr-3'
-= link_to '削除', @discussion, method: :delete, data: { confirm: "タスク「#{@discussion.theme}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
+= link_to '削除', @discussion, method: :delete, remote: true, data: { confirm: "タスク「#{@discussion.theme}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
 = link_to 'コメントする', new_discussion_comment_path(@discussion) 
 table.table.table-hover
  tbody
@@ -11,17 +11,17 @@ table.table.table-hover
      th = Discussion.human_attribute_name(:id)
      td = @discussion.id
    tr
-     th = Discussion.human_attribute_name(:theme)
+     th = Discussion.human_attribute_name(:テーマ)
      td = @discussion.theme
    tr
-     th = Discussion.human_attribute_name(:description)
+     th = Discussion.human_attribute_name(:内容)
      td = simple_format(h(@discussion.description),{}, sanitize:false, wrapper_tag: "div")
    tr         
-     th = Discussion.human_attribute_name(:created_at)
+     th = Discussion.human_attribute_name(:作成日時)
      td = @discussion.created_at
    tr         
-     th = Discussion.human_attribute_name(:updated_at)
+     th = Discussion.human_attribute_name(:更新日時)
      td = @discussion.updated_at
 - if @discussion.comments.present? 
    - @discussion.comments.each do |comment|
-     li = link_to comment.content, discussion_comment_path(comment)
+     li = link_to comment.content, discussion_comment_path(@discussion, comment)
