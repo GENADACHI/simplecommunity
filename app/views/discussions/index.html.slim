@@ -1,8 +1,8 @@
 h1 ディスカッションページ
-p ディスカッションテーマ一覧
 = link_to '新規登録', new_discussion_path, class: 'btn btn-primary'
-= link_to 'ログアウト', destroy_member_session_path, method: :delete
+= link_to 'ログアウト', destroy_member_session_path, method: :delete, class: 'btn btn-primary ml-2'
 .mb-3
+
 table.table.table-hover
   thead.thead-default
     tr 
@@ -13,6 +13,7 @@ table.table.table-hover
   tbody
    - @discussions.each do |discussion|
       tr
-        td= link_to discussion.theme, discussion
-        td= discussion.description
-        td= discussion.created_at
+        td= link_to discussion.theme.truncate(20), discussion
+        td= discussion.description.truncate(30) 
+        td= l discussion.created_at, format: :long
+= paginate @discussions

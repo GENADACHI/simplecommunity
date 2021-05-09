@@ -13,6 +13,22 @@
  *= require_tree .
  *= require_self
  */
+ .page {
+  padding:5px; border:1px; lightblue solid;
+ }
+.first {
+  padding: 5px; border:1px; lightblue solid;
+}
+.prev {
+  padding: 5px; border:1px; lightblue solid;
+}
+.next {
+  padding: 5px; border:1px; lightblue solid;
+}
+.last {
+  padding: 5px; border:1px; lightblue solid; 
+}
+
 main {
   min-height: calc(100vh - 60px);
   overflow: hidden;
@@ -26,3 +42,7 @@ header {
 footer {
   height: 60px;
 }
+
+
+
+

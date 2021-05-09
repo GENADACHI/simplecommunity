@@ -5,8 +5,8 @@ p テーマについて自由にコメントしよう
 
 = form_with(model: [@discussion, @comment], local: true) do |f| 
  .form-group
- = f.label :content
- = f.text_area :content, class: 'form-control', id: 'comment_content' 
+ = f.label :content, '内容'
+ = f.text_area :content, rows: 10, class: 'form-control', id: 'comment_content' 
 
- .form-action
- = f.submit nil, class: 'btn btn-primary' 
+ .form-action.mt-2
+   = f.submit nil, class: 'btn btn-primary' 

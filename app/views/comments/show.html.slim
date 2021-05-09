@@ -15,4 +15,4 @@ table.table.table-hover
       td= @comment.updated_at
 p.Content: = @comment.present?
 = link_to '編集', edit_discussion_comment_path(@discussion, @comment)
-= link_to '削除', discussion_comment_path(@discussion, @comment), method: :delete, data: { confirm: '削除します。よろしいですか?' }, class: 'btn btn-danger
+= link_to '削除', discussion_comment_path(@discussion, @comment), method: :delete, data: { confirm: '削除します。よろしいですか?' }, class: 'btn btn-danger'

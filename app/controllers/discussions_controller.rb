@@ -1,10 +1,11 @@
 class DiscussionsController < ApplicationController
   def index
-    @discussions = Discussion.all
+    @discussions = Discussion.page(params[:page]).per(3)
   end
 
   def show
     @discussion = Discussion.find(params[:id])
+    @comments = @discussion.comments.includes(:member).all
   end
 
   def new
