@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to discussion_path(@discussion), notice: 'コメントが登録されました'
     else
-      render 'discusstion/show'
+      render 'discussion/show'
     end
   end
   

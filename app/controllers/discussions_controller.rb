@@ -33,7 +33,7 @@ class DiscussionsController < ApplicationController
       render:new
     end
   end
-  
+    
   def destroy
     discussion = Discussion.find(params[:id])
     discussion.destroy

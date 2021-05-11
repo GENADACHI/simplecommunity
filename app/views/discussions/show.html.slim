@@ -18,4 +18,3 @@ table.table.table-hover
 - if @discussion.comments.present? 
    - @discussion.comments.each do |comment|
      li = link_to comment.content, discussion_comment_path(@discussion, comment)
-     = link_to 'メンバー名', member_show_path
