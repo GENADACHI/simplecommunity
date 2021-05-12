@@ -1,7 +1,7 @@
 h1 テーマ詳細についてコメントしてね
 .nav.justify-content-end
 = link_to '一覧', discussions_path, class: 'btn btn-primary mr-3'
-= link_to '編集', edit_discussion_path, class: 'btn btn-primary mr-3'
+= link_to '編集', edit_discussion_path(@discussion), class: 'btn btn-primary mr-3'
 = link_to '削除', @discussion, method: :delete, remote: true, data: { confirm: "タスク「#{@discussion.theme}」を削除します。よろしいですか？" }, class: 'btn btn-danger delete'
 = link_to 'コメントする', new_discussion_comment_path(@discussion), class: 'btn btn-primary ml-3'
 table.table.table-hover
