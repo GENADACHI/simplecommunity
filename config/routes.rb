@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'notifications/index'
   root to: 'top#index'
   get 'top/index'
   get 'top/login_check'
