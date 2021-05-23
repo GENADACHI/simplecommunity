@@ -1,0 +1,12 @@
+h1 返信登録
+p コメントに対する返信
+.nav.jsutify-content-end
+= link_to '戻る', discussions_path, class:'nav-link'
+
+= form_with(model: [@comment, @answer], local: true) do |f| 
+ .form-group
+ = f.label :content, '内容'
+ = f.text_area :content, rows: 10, class: 'form-control', id: 'answer_content' 
+
+ .form-action.mt-2
+   = f.submit nil, class: 'btn btn-primary' 

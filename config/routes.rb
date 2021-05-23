@@ -4,8 +4,13 @@ Rails.application.routes.draw do
   get 'top/index'
   get 'top/login_check'
   devise_for :members
-  get 'member/show'
   resources :discussions do
     resources :comments
- end
+    resource :likes, only: [:create, :destroy]
+  end
+  resources :comments do
+    resources :answers
+    resource :likes, only: [:create, :destroy]
+  end
+
 end

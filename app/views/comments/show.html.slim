@@ -5,10 +5,10 @@ h1 コメント詳細
 table.table.table-hover
   tbody
     tr
-      th= Comment.human_attribute_name(:content)
+      th= Comment.human_attribute_name(:内容)
       td= @comment.content
     tr
-      th= Comment.human_attribute_name(:created_at)
+      th= Comment.human_attribute_name(:作成日)
       td= @comment.created_at
     tr
       th= Comment.human_attribute_name(:updated_at)
@@ -16,3 +16,4 @@ table.table.table-hover
 p.Content: = @comment.present?
 = link_to '編集', edit_discussion_comment_path(@discussion, @comment)
 = link_to '削除', discussion_comment_path(@discussion, @comment), method: :delete, data: { confirm: '削除します。よろしいですか?' }, class: 'btn btn-danger'
+= link_to '返信', new_comment_answer_path(@comment, @answer)

@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
  
   def new
     @discussion = Discussion.find(params[:discussion_id])
+    @member = current_member
     @comment = Comment.new
   end
 

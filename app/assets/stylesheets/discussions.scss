@@ -1,3 +1,45 @@
 // Place all the styles related to the discussions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.nav {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+.nav, ::after, ::before {
+    box-sizing: border-box;
+}
+.nav {
+    margin: 10px;
+    padding: 0px;
+    text-decoration: none;
+}
+.table th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+th {
+    text-align: inherit;
+}
+th {
+    display: table-cell;
+    font-weight: bold;
+    width: 100px;
+}
+th {
+    text-align: inherit;
+}
+th, ::after, ::before {
+    box-sizing: border-box;
+}
+th　{
+    margin: 100px;
+    padding: 0px;
+    text-decoration: none;
+}
+
